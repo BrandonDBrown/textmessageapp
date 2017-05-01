@@ -1,0 +1,24 @@
+<div class="col-md-12">
+  <h3>Sign Up</h3>
+  <form ng-submit="formSubmit()" class="form" name="signUp">
+    <div class="col-md-4">
+      <div class="form-group">
+        <input type="email" name="email" class="my-input form-control" ng-model="email" placeholder="email" required=""/>
+        <div role="alert">
+          <span class="error" ng-show="signUp.email.$error.required">Required!</span>
+          <span class="error" ng-show="signUp.email.$error.email">Not valid email!</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="password" class="form-control" ng-model="password" placeholder="password" required=""/>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-success">Sign Up</button>
+        <span class="text-danger">{{ error }}</span>
+      </div>
+
+    </div>
+  </form>
+</div>
