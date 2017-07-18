@@ -24,6 +24,7 @@
           <a ui-sref="home" ui-sref-active="active">Home</a>
           <a ui-sref="login" ui-sref-active="active">Login</a>
           <a ui-sref="signUp" ui-sref-active="active">Sign Up</a>
+          <a ui-sref="logout" ui-sref-active="active">Log out</a>
           <div ui-view></div>
         </div>
       </div>
@@ -31,12 +32,21 @@
 
     <script src="vendor/jquery/dist/jquery.js"></script>
     <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="vendor/long/dist/long.js"></script>
+    <script src="vendor/bytebuffer/dist/bytebuffer.js"></script>
+    <script src="vendor/protobuf/dist/protobuf.js"></script>
     <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-underscore-module/angular-underscore-module.js"></script>
     <script src="vendor/angular-resource/angular-resource.js"></script>
     <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="js/services/lb-services.js"></script>
+    <script src="vendor/moment/moment.js"></script>
+    <script src="vendor/angular-moment/angular-moment.js"></script>
     <script src="js/app.js"></script>
+    <script src="vendor/underscore/underscore.js"></script>
     <script src="js/controllers/homecontroller.js"></script>
-    <script src="js/controllers/AuthLoginController.js"></script>
+    <script src="js/controllers/loginController.js"></script>
+    <script src="js/controllers/signUpController.js"></script>
+    <script src="js/controllers/accountProfileController.js"></script>
   </body>
 </html>

@@ -4,7 +4,7 @@
     "port": 3306,
     "database": "textMessagedb",
     "password": "Babybrown16",
-    "name": "textMessagedb",
+    "name": "mysqldb",
     "user": "root",
     "connector": "mysql"
   }

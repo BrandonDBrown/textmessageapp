@@ -13,19 +13,34 @@
       "./mixins"
     ]
   },
+  "User": {
+    "dataSource": "mysqldb"
+  },
+  "AccessToken": {
+    "dataSource": "mysqldb",
+    "public": false,
+    "relations": {
+      "user": {
+        "type": "belongsTo",
+        "model": "Account",
+        "foreignKey": "accountId"
+      }
+    }
+  },
+  "ACL": {
+    "dataSource": "mysqldb",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "mysqldb",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "mysqldb",
+    "public": false
+  },
   "Account": {
     "dataSource": "mysqldb",
     "public": true
-  },
-  "AccessToken": {
-  "dataSource": "mysqldb",
-  "public": false,
-  "relations": {
-    "user": {
-      "type": "belongsTo",
-      "model": "Account",
-      "foreignKey": "accountId"
-    }
   }
-}
 }
