@@ -10,7 +10,13 @@
   },
   "properties": {},
   "validations": [],
-  "relations": {},
+  "relations": {
+    "Routes": {
+      "type": "hasMany",
+      "model": "Route",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

@@ -1,13 +1,12 @@
-<div>Bus Number:</div>
-<select ng-model="selectedRoute" ng-change="changeRoute()">
-  <option ng-repeat="x in routes track by $index" value="{{x}}">{{x}}</option>
-</select>
-<div>{{selectedRoute}}</div>
-<div>Direction</div>
-<select ng-model="selectedDirection" ng-change="changeDirection()">
-  <option ng-repeat="x in directions" value="{{x}}">{{x}}</option>
-</select>
-<div>Stops</div>
-<select ng-model="selectedStop" ng-change="changeStop()">
-  <option ng-repeat="x in stops track by $index" value="{{x}}">{{x}}</option>
-</select>
+<div class="col-md-12 col-md-offset-4">
+  <!-- ng-hide if there is no saved route in the database -->
+  <!-- ng repeat icons for each of the saved routes but give them different colors -->
+    <span class="fa-stack fa-5x" ng-hide='1>0'>
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-bus fa-stack-1x fa-inverse"></i>
+    </span>
+    <a href="#!/account/{{ currentUser }}/add" class="fa-stack fa-5x faa-bounce animated-hover">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-plus fa-stack-1x fa-inverse"></i>
+    </a>
+</div>

@@ -4,29 +4,67 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Text Message App</title>
-
+    <title>Communte LA</title>
     <!-- Bootstrap -->
     <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="vendor/font-awesome-animation/dist/font-awesome-animation.min.css">
     <link href="css/login.css" rel="stylesheet">
-
   </head>
   <body ng-app="app">
     <div class="container">
-      <!-- <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Text Message App</a>
+      <!-- start of nav -->
+      <nav class="navbar navbar-inverse navbar-fixed-top animate">
+        <div class="container navbar-more visible-xs"></div>
+        <div class="container">
+        <div class="navbar-header hidden-xs">
+          <a class="navbar-brand" href="#!/account/{{ currentUser }}">Commute LA</a>
         </div>
-      </div> -->
+
+        <ul class="nav navbar-nav navbar-right mobile-bar" ng-controller="navController">
+         <li>
+           <a href="#">
+             <span class="menu-icon fa fa-home"></span>
+             Home
+           </a>
+         </li>
+         <li ng-show="loggedIn === true">
+           <a href="#!/account/{{ currentUser }}">
+             <span class="menu-icon fa fa-car"></span>
+             <span class="hidden-xs">Commute</span>
+             <span class="visible-xs">Commute</span>
+           </a>
+         </li>
+         <li ng-show="loggedIn === true">
+           <a href="#" ng-click="logoutUser()">
+             <span class="menu-icon fa fa-user"></span>
+             Logout
+           </a>
+         </li>
+         <li ng-show="loggedIn === false">
+           <a href="#!/login">
+             <span class="menu-icon fa fa-user"></span>
+             Log In
+           </a>
+         </li>
+         <li ng-show="loggedIn === false">
+           <a href="#!/signup">
+             <span class="menu-icon fa fa-user"></span>
+             Sign Up
+           </a>
+         </li>
+         <li ng-show="loggedIn === true">
+           <a href="#">
+             <span class="menu-icon fa fa-plane"></span>
+             Settings
+           </a>
+         </li>
+        </ul>
+        </div>
+      </nav>
+      <!-- end of nav -->
 
       <div class ="row">
-        <div class="col-xs-12">
-          <a ui-sref="home" ui-sref-active="active">Home</a>
-          <a ui-sref="login" ui-sref-active="active">Login</a>
-          <a ui-sref="signUp" ui-sref-active="active">Sign Up</a>
-          <a ui-sref="logout" ui-sref-active="active">Log out</a>
-          <div ui-view></div>
-        </div>
+          <div ng-view></div>
       </div>
     </div>
 
@@ -38,15 +76,18 @@
     <script src="vendor/angular/angular.js"></script>
     <script src="vendor/angular-underscore-module/angular-underscore-module.js"></script>
     <script src="vendor/angular-resource/angular-resource.js"></script>
-    <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="vendor/angular-route/angular-route.js"></script>
     <script src="js/services/lb-services.js"></script>
     <script src="vendor/moment/moment.js"></script>
     <script src="vendor/angular-moment/angular-moment.js"></script>
     <script src="js/app.js"></script>
     <script src="vendor/underscore/underscore.js"></script>
+    <script src="js/controllers/navController.js"></script>
     <script src="js/controllers/homecontroller.js"></script>
     <script src="js/controllers/loginController.js"></script>
     <script src="js/controllers/signUpController.js"></script>
     <script src="js/controllers/accountProfileController.js"></script>
+    <script src="js/controllers/addRouteController.js"></script>
+
   </body>
 </html>

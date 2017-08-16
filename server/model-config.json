@@ -42,5 +42,9 @@
   "Account": {
     "dataSource": "mysqldb",
     "public": true
+  },
+  "Route": {
+    "dataSource": "mysqldb",
+    "public": true
   }
 }

@@ -1,7 +1,7 @@
-<div class="col-md-12">
-  <h3>Login</h3>
+<div class="col-md-12 col-md-offset-4">
   <form ng-submit="loginUser()" class="form" name="login">
     <div class="col-md-4">
+      <h3>Login</h3>
       <div class="form-group">
         <input type="email" name="email" class="form-control" ng-model="email" placeholder="email" required=""/>
         <div class="alert alert-danger" ng-show="login.email.$touched && login.email.$invalid">Please enter valid email.</div>

@@ -1,0 +1,13 @@
+<div>Bus Number:</div>
+<select ng-model="selectedRoute" ng-change="changeRoute()">
+  <option ng-repeat="x in routes track by $index" value="{{x}}">{{x}}</option>
+</select>
+<div>{{selectedRoute}}</div>
+<div>Direction</div>
+<select ng-model="selectedDirection" ng-change="changeDirection()">
+  <option ng-repeat="x in directions" value="{{x}}">{{x}}</option>
+</select>
+<div>Stops</div>
+<select ng-model="selectedStop" ng-change="changeStop()">
+  <option ng-repeat="x in stops track by $index" value="{{x}}">{{x}}</option>
+</select>
