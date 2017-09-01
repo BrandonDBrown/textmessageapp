@@ -28,6 +28,11 @@ textMessageApp.config(function($routeProvider) {
     templateUrl: 'views/addRoute.html',
     controller: 'AddRouteController'
   })
+
+  .when("/account/:userId/route/:id", {
+    templateUrl: 'views/delay.html',
+    controller: 'BusDelayController'
+  })
 })
 // .otherwise({
 //     redirectTo: '/'

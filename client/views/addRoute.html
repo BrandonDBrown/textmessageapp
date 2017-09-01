@@ -4,22 +4,22 @@
       <h3>Add Route</h3>
       <div class="form-group">
         <div>Bus</div>
-        <select ng-model="selectedRoute" ng-change="changeRoute()">
+        <select class="form-control" ng-model="selectedRoute" ng-change="changeRoute()">
           <option ng-repeat="route in routes track by $index" value="{{ route }}">{{ route }}</option>
         </select>
         <div>Direction</div>
-        <select ng-model="selectedDirection" ng-change="changeDirection()">
+        <select class="form-control" ng-model="selectedDirection" ng-change="changeDirection()">
           <option ng-repeat="direction in directions" value="{{ direction }}">{{ direction }}</option>
         </select>
         <div>Stops</div>
-        <select ng-model="selectedStop" ng-change="changeStop()">
+        <select class="form-control" ng-model="selectedStop" ng-change="changeStop()">
           <option ng-repeat="stop in stops track by $index" value="{{ stop }}">{{ stop }}</option>
         </select>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary" ng-disabled='selectedDirection == "" || selectedStop == ""'>Save</button>
-        <span class="text-danger">{{ error }}</span>
       </div>
+      <span class="alert alert-danger" ng-if='error != ""'>{{ error }}</span>
     </div>
   </form>
 </div>

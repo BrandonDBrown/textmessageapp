@@ -46,23 +46,6 @@ textMessageApp.controller('AddRouteController', [ '$scope', 'Account', '$http', 
         console.log(response);
       })
     })
-    // $http.get('/api/Routes/findOne?filter={ "where": {"route":' +$scope.selectedRoute+ ', "stop":' +$scope.selectedStop+ ', "direction":' +$scope.selectedDirection+ ', "accountId":' +Account.getCurrentId()+ '}}').then(function(response) {
-    //   console.log(response);
-    //   if(response.status == 200){
-    //     $scope.error = "Route already exists. Please choose a new route."
-    //   } else {
-        // $http.post('/api/Routes', { "route": $scope.selectedRoute, "stop": $scope.selectedStop, "direction": $scope.selectedDirection, "accountId": Account.getCurrentId() }).then(function(response) {
-        //   console.log(response);
-        //   $location.path('/account/' +$scope.currentUser);
-        // },
-        // function(response) {
-        //   console.log(response);
-        // })
-    //   }
-    // },
-    // function(response) {
-    //   console.log(response);
-    // })
   }
 
   $http.get("http://gtfs.bigbluebus.com/parsed/routes.json").then(function(response) {
