@@ -11,11 +11,11 @@
 
 /*//css*/
 .animate.ng-enter {
-    transition: 0.6s cubic-bezier(0.5, 0.1, 0.25, 1) all;
-    transition-delay: 0.7s;
+    transition: 0.5s cubic-bezier(0.5, 0.1, 0.25, 1) all;
+    transition-delay: 0.3s;
 }
 .animate.ng-leave {
-    transition: 0.6s cubic-bezier(0.5, 0.1, 0.25, 1) all;
+    transition: 0.2s cubic-bezier(0.5, 0.1, 0.25, 1) all;
 }
 .animate.ng-enter, .animate.ng-leave.ng-leave-active {
     opacity: 0;
