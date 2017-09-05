@@ -1,1 +1,5 @@
-<div>Bus Delay: {{ delay }}</div>
+<div class='col-md-6 col-md-offset-3'>
+  <h1 class="text-center">Current Delay</h1>
+    <div class="loader1 text-center animate-show-hide" ng-hide="dataLoaded"></div>
+    <div ng-show= 'dataLoaded' class="text-center delay animate-show-hide">{{ delay }}</div>
+</div>

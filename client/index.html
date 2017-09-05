@@ -9,64 +9,33 @@
     <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="vendor/font-awesome-animation/dist/font-awesome-animation.min.css">
     <link href="css/login.css" rel="stylesheet">
-    <link href="css/dropdown.css" rel="stylesheet">
+    <link href="css/loader.css" rel="stylesheet">
+    <link href="css/welcome.css" rel="stylesheet">
 
   </head>
   <body ng-app="app">
     <div class="container">
-      <!-- start of nav -->
-      <nav class="navbar navbar-inverse navbar-fixed-top animate">
+      <nav class="navbar navbar-inverse navbar-fixed-top animate" ng-controller="navController">
         <div class="container navbar-more visible-xs"></div>
         <div class="container">
-        <div class="navbar-header hidden-xs">
-          <a class="navbar-brand" href="#!/account/{{ currentUser }}">Commute LA</a>
-        </div>
+          <div class="navbar-header hidden-xs">
+            <a class="navbar-brand" href="#!/account/{{ currentUser }}">Commute LA</a>
+          </div>
 
-        <ul class="nav navbar-nav navbar-right mobile-bar" ng-controller="navController">
-         <li>
-           <a href="#">
-             <span class="menu-icon fa fa-home"></span>
-             Home
-           </a>
-         </li>
-         <li ng-show="loggedIn === true">
-           <a href="#!/account/{{ currentUser }}">
-             <span class="menu-icon fa fa-car"></span>
-             <span class="hidden-xs">Commute</span>
-             <span class="visible-xs">Commute</span>
-           </a>
-         </li>
-         <li ng-show="loggedIn === true">
-           <a href="#" ng-click="logoutUser()">
-             <span class="menu-icon fa fa-user"></span>
-             Logout
-           </a>
-         </li>
-         <li ng-show="loggedIn === false">
-           <a href="#!/login">
-             <span class="menu-icon fa fa-user"></span>
-             Log In
-           </a>
-         </li>
-         <li ng-show="loggedIn === false">
-           <a href="#!/signup">
-             <span class="menu-icon fa fa-user"></span>
-             Sign Up
-           </a>
-         </li>
-         <li ng-show="loggedIn === true">
-           <a href="#">
-             <span class="menu-icon fa fa-plane"></span>
-             Settings
-           </a>
-         </li>
-        </ul>
+          <ul class="nav navbar-nav navbar-right mobile-bar">
+            <nav-bar name='Home' href="#" icon="home" ng-model='loggedIn'></nav-bar>
+            <nav-bar ng-if="loggedIn === true" name='Commute' href="#!/account/{{ currentUser }}" icon="bus"></nav-bar>
+            <nav-bar ng-if="loggedIn === true" name='Log Out' href="#" icon="user" ng-click="logoutUser()"></nav-bar>
+            <nav-bar ng-if="loggedIn === true" name='Settings' href="#" icon="cog"></nav-bar>
+            <nav-bar ng-if="loggedIn === false" name='Log In' href="#!/login" icon="user"></nav-bar>
+            <nav-bar ng-if="loggedIn === false" name='Sign Up' href="#!/signup" icon="user"></nav-bar>
+          </ul>
         </div>
       </nav>
-      <!-- end of nav -->
+      <div id="particles-js"></div>
 
       <div class ="row">
-          <div ng-view></div>
+        <div class="animate" ng-view></div>
       </div>
     </div>
 
@@ -82,7 +51,9 @@
     <script src="js/services/lb-services.js"></script>
     <script src="vendor/moment/moment.js"></script>
     <script src="vendor/angular-moment/angular-moment.js"></script>
+    <script src="vendor/particles.js/particles.js"></script>
     <script src="js/app.js"></script>
+    <script src="vendor/angular-animate/angular-animate.js"></script>
     <script src="vendor/underscore/underscore.js"></script>
     <script src="js/controllers/navController.js"></script>
     <script src="js/controllers/homecontroller.js"></script>
@@ -91,5 +62,6 @@
     <script src="js/controllers/accountProfileController.js"></script>
     <script src="js/controllers/addRouteController.js"></script>
     <script src="js/controllers/busDelayController.js"></script>
+    <script src="js/directives/navBar.directive.js"></script>
   </body>
 </html>

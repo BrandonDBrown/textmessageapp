@@ -1,0 +1,71 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300);
+
+.animate-show-hide.ng-hide {
+  opacity: 0;
+}
+
+.animate-show-hide.ng-hide-add,
+.animate-show-hide.ng-hide-remove {
+  transition: all linear 0.5s;
+}
+
+/*//css*/
+.animate.ng-enter {
+    transition: 0.6s cubic-bezier(0.5, 0.1, 0.25, 1) all;
+    transition-delay: 0.7s;
+}
+.animate.ng-leave {
+    transition: 0.6s cubic-bezier(0.5, 0.1, 0.25, 1) all;
+}
+.animate.ng-enter, .animate.ng-leave.ng-leave-active {
+    opacity: 0;
+    display: block;
+}
+.animate.ng-leave, .animate.ng-enter.ng-enter-active {
+    opacity: 1;
+    display: block;
+}
+
+/* -------------- Loader1 -------------- */
+
+.loader1{
+  opacity: 1;
+	position: absolute;
+	height: 150px;
+	width: 150px;
+	border-radius: 150px;
+	border: 2px solid #BAC1B8;
+  margin-top: 70px;
+	/*top: 80%;*/
+	/*top: -webkit-calc(120%);*/
+	/*top: calc(120%);*/
+	/*left: 35%;*/
+	left: -webkit-calc(38%);
+	left: calc(38%);
+
+	-webkit-transform-origin: 50% 50%;
+			transform-origin: 50% 50%;
+	-webkit-animation: loader1 3s linear infinite;
+			animation: loader1 3s linear infinite;
+}
+
+.loader1:after {
+	content: "";
+	position: absolute;
+	top: -12px;
+	/*left: -10px;*/
+	width: 25px;
+	height: 25px;
+	border-radius: 25px;
+	background-color: #829CBC;
+}
+
+@-webkit-keyframes loader1{
+    0%{-webkit-transform:rotate(0deg);}
+    100%{-webkit-transform:rotate(360deg);}
+}
+
+@keyframes loader1{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
