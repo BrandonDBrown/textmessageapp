@@ -17,6 +17,7 @@
     "angular-ui-router": "^0.4.2",
     "angular-resource": "^1.6.4",
     "bootstrap": "^3.3.7",
-    "particles.js": "^2.0.0"
+    "particles.js": "^2.0.0",
+    "angular-oboe": "*"
   }
 }

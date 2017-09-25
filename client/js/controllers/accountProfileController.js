@@ -2,11 +2,11 @@
 
 angular
   .module('app')
-  .controller('AccountProfileController', [ '$scope', 'Account', 'Route', '$http', '_', 'moment', '$log', function($scope, Account, Route, $http, _, moment, $log) {
+  .controller('AccountProfileController', [ '$scope', 'Account', 'Route', '$http', '_', 'moment', '$log', '$routeParams', '$location', function($scope, Account, Route, $http, _, moment, $log, $routeParams, $location) {
+    $routeParams.userId == Account.getCurrentId() ? $location.path('/account/' +Account.getCurrentId()) : $location.path('/account/' +Account.getCurrentId());
     $scope.currentUser = Account.getCurrentId();
     $scope.currentRoute = 0
     $scope.routes = [];
-    // $scope.selectedRoute.split(" ")[0]
     Route.find({
       filter: {
         where: {
@@ -23,10 +23,3 @@ angular
       console.log(errorResponse);
     })
   }]);
-
-// NEXT TASKS
-// - FIX LOGIN Nav bar options showing
-// - STREAM JSON OBJECTS WITH OBOE
-// - USER PROFILE UI
-// - SAVE USER PREFERENCES AND DISPLAY DELAY TIME ON DASHBOARD
-// - HEROKU OR AWS DEPLOYMENT

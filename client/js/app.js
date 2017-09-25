@@ -1,5 +1,5 @@
 angular
-  .module('app', ['lbServices', 'underscore', 'angularMoment', 'ngRoute', 'ngAnimate'])
+  .module('app', ['lbServices', 'underscore', 'angularMoment', 'ngRoute', 'ngAnimate', 'ngOboe'])
 
   .config(function($routeProvider) {
 

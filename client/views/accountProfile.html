@@ -1,12 +1,8 @@
-<div class="col-md-12 col-md-offset-4">
-  <!-- ng-hide if there is no saved route in the database -->
-  <!-- ng repeat icons for each of the saved routes but give them different colors -->
-    <a href="#!/account/{{ currentUser }}/route/{{ route }}" ng-repeat="route in routes" value="{{ route }}" class="fa-stack fa-5x">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-stack-1x fa-inverse">{{ route }}</i>
-    </a>
-    <a href="#!/account/{{ currentUser }}/add" class="fa-stack fa-5x faa-bounce animated-hover">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-plus fa-stack-1x fa-inverse"></i>
-    </a>
+<div class="col-md-8 col-md-offset-2">
+  <div class="col-md-4 text-center" ng-repeat="route in routes">
+      <a class="circle circle2" href="#!/account/{{ currentUser }}/route/{{ route }}" style="text-decoration:none" value="{{ route }}"><h2>{{ route }}</h2></a>
+  </div>
+  <div class="col-md-4 text-center">
+    <a href="#!/account/{{ currentUser }}/add" class="circle circle2" style="text-decoration:none"><h2>+</h2></a>
+  </div>
 </div>

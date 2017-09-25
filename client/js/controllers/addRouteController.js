@@ -24,7 +24,7 @@ angular
   $scope.error = "";
 
   $scope.addRoute = function() {
-    $scope.pen = Route.findOne({
+    Route.findOne({
       filter: {
         where: {
           route: $scope.selectedRoute,
