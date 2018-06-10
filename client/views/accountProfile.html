@@ -1,6 +1,6 @@
 <div class="col-md-8 col-md-offset-2">
   <div class="col-md-4 text-center" ng-repeat="route in routes">
-      <a class="circle circle2" href="#!/account/{{ currentUser }}/route/{{ route }}" style="text-decoration:none" value="{{ route }}"><h2>{{ route }}</h2></a>
+      <a class="circle circle2" href="#!/account/{{ currentUser }}/route/{{ route.id }}" style="text-decoration:none" value="{{ route.number }}"><h2>{{ route.number }}</h2></a>
   </div>
   <div class="col-md-4 text-center">
     <a href="#!/account/{{ currentUser }}/add" class="circle circle2" style="text-decoration:none"><h2>+</h2></a>

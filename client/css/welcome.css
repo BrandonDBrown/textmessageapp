@@ -14,6 +14,7 @@
 
 .form-control {
   background-color: transparent;
+  color:#BAC1B8;
   height: 50px;
 }
 
@@ -106,6 +107,7 @@ h2 {
 }
 
 .circle h2 {
+  margin-top: 32px;
   font-size: 60px;
 }
 

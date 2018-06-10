@@ -26,7 +26,12 @@ body {
   color: #BAC1B8;
 }
 
+.noBus {
+  margin-top: 100px;
+  font-size: 25px;
+}
 .route {
+  margin-top: 70px;
   font-size: 25px;
   color: #BAC1B8;
 }

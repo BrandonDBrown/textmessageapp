@@ -19,7 +19,7 @@ var myTime = 1000;
 angular
   .module('app')
   .controller('AddRouteController', [ '$scope', 'Account', '$http', '_', 'moment', '$routeParams', '$location', 'Route', function($scope, Account, $http, _, moment, $routeParams, $location, Route) {
-  $routeParams.userId == Account.getCurrentId() ? $location.path('/account/' +Account.getCurrentId()+ '/add') : $location.path('/account/' +Account.getCurrentId()+ '/add');
+  $routeParams.userId === Account.getCurrentId() ? $location.path('/account/' +Account.getCurrentId()+ '/add') : $location.path('/account/' +Account.getCurrentId()+ '/add');
   $scope.currentUser = Account.getCurrentId();
   $scope.error = "";
 

@@ -7,20 +7,24 @@ protobuf.load("/js/controllers/gtfs-realtime.proto", function(err, root){
 
 angular
   .module('app')
-  .controller('BusDelayController', [ '$scope', 'Account', '$http', '_', 'moment', '$interval', '$routeParams', 'Route', '$location', '$timeout', function($scope, Account, $http, _, moment, $interval, $routeParams, Route, $location, $timeout) {
+  .controller('BusDelayController', [ '$scope', 'Account', '$http', '_', 'moment', '$interval', '$routeParams', 'Route', '$location', '$timeout', 'combinations', function($scope, Account, $http, _, moment, $interval, $routeParams, Route, $location, $timeout, combinations) {
   let currentCommute = _.last($location.path().split('/'))
-  $routeParams.userId == Account.getCurrentId() ? $location.path('/account/' +Account.getCurrentId()+ '/route/' +currentCommute ) : $location.path('/account/' +Account.getCurrentId());
-  // Route.exists( {id: $routeParams.id}) ? $location.path('/account/' +Account.getCurrentId()+ '/route/' +currentCommute ) : $location.path('/account/' +Account.getCurrentId());
   $scope.dataLoaded = false;
+  $scope.showDelay = false;
   Route.find({
     filter: {
       where: {
-        id: currentCommute
+        id: currentCommute,
+        accountId: Account.getCurrentId()
       }
     }
   },
   function(response) {
     $scope.myCommute = response[0];
+    Route.exists( {id: $routeParams.id, accountId: Account.getCurrentId() },
+      function(response) {
+        response.exists ? $location.path('/account/' +Account.getCurrentId()+ '/route/' +$scope.myCommute.id) : $location.path('/account/' +Account.getCurrentId());
+      })
     $scope.direction = $scope.myCommute.direction;
     $scope.route = $scope.myCommute.route;
     $scope.stop = $scope.myCommute.stop;
@@ -28,7 +32,6 @@ angular
     var arrivalTime = {};
     var currentArrivalTimes = {};
     var delayCheck;
-
 
     delay();
 
@@ -52,11 +55,10 @@ angular
         var serviceIds = calendarkeys.filter(serviceId).map( (id) => { return response.data[id].service_id });
 
         $http.get("http://gtfs.bigbluebus.com/parsed/trips.json").then(function(response) {
-          // let keys = Object.keys(response.data);
           let tripIds = [];
-          var combos = combinations(currentRoutes.length, serviceIds.length);
+          var combos = combinations.getCombos(currentRoutes.length, serviceIds.length);
+          console.log(combos);
           for (let i=0; i<combos.length; i++) {
-            // tripIds.push(_.where(response.data, {trip_headsign: $scope.myCommute.direction, route_id: currentRoutes[combos[i][0]]}));
             tripIds.push(_.where(response.data, {trip_headsign: $scope.myCommute.direction, route_id: currentRoutes[combos[i][0]], service_id: serviceIds[combos[i][1]] }));
           }
           tripIds = _.flatten(tripIds);
@@ -97,16 +99,18 @@ angular
                   }
                 })
                 console.log(yourBus);
-                var nextHour = arrivalTime[yourBus].split(":")[1] - moment().format('mm') < 0 ? 60 : 0;
                 if ($scope.currentTrip.length !== 0)  {
+                  var nextHour = arrivalTime[yourBus].split(":")[1] - moment().format('mm') < 0 ? 60 : 0;
                   var delayTime = realtime.entity[currentArrivalTimes[yourBus]].tripUpdate.stopTimeUpdate["0"].arrival.delay;
                   console.log(arrivalTime[yourBus]);
                   console.log(delayTime);
                   $scope.delay = arrivalTime[yourBus].split(":")[1] - moment().format('mm') + delayTime/60 + nextHour;
                   $scope.dataLoaded = true;
+                  $scope.showDelay = true;
                 } else {
-                  $scope.delay = "No Buses running at this time";
+                  $scope.noBus = "No Buses running at this time";
                   $scope.dataLoaded = true;
+                  $scope.showDelay = false;
                   $scope.$on('$destroy',function(){
                     if(delayCheck) {
                       $interval.cancel(delayCheck);
@@ -122,38 +126,17 @@ angular
   function (response) {
     console.log("Error" +response);
   })
-// }, intervalTimeout)
-$scope.$on('$destroy',function(){
-  if(delayCheck) {
-    $interval.cancel(delayCheck);
+  $scope.$on('$destroy',function(){
+    if(delayCheck) {
+      $interval.cancel(delayCheck);
+    }
+  });
   }
-});
-}
 },
 function(errorResponse) {
   console.log(errorResponse);
 })
 }]);
-
-function combinations(length1, length2) {
-  var sub_array = []
-  var array1 = []
-  var array2 = []
-
-  for (let i=0; i<length1; i++) {
-    array1.push(i);
-  }
-  for (let i=0; i<length1; i++) {
-    array2.push(i);
-  }
-
-  for (let i=0; i<length2; i++) {
-    for (let j=0; j<length1; j++) {
-      sub_array.push([array1[i], array2[j]]);
-    }
-  }
-  return sub_array;
-}
 // NEXT TASKS
 // - FIX LOGIN (DONE)
 // - STREAM JSON OBJECTS WITH OBOE
